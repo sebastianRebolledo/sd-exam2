@@ -27,7 +27,7 @@ const router = express.Router();
  router.post('/', (req,res) => {
      const { id, name, salary } = req.body;
      const query = ` 
-       CALL employeeAddOrEdit(?,?,?);
+       CALL employeesAddOrEdit(?,?,?);
      `;
      mysqlConnection.query(query,[id,name,salary], (err,rows,fields) => {
          if(!err){
@@ -42,8 +42,8 @@ const router = express.Router();
  router.put('/:id',(req,res) =>{
      const {name,salary} = req.body;
      const {id} = req.params;
-     const query = 'CALL employeeAddOrEdit(?,?,?)';
-     mysqlConnection.query(query,[id,name,salary], (err,rows,fileds) => {
+     const query = 'CALL employeesAddOrEdit(?,?,?)';
+     mysqlConnection.query(query,[id,name,salary], (err,rows,fields) => {
          if(!err){
              res.json({status: 'Empleado actualizado'})
          }else{
@@ -54,7 +54,7 @@ const router = express.Router();
 
  router.delete('/:id',(req,res)=>{
      const {id} = req.params;
-     mysqlConnection.query('DELETE FROM employees WHERE id = ?',[id], (err, rows,flieds) => {
+     mysqlConnection.query('DELETE FROM employees WHERE id = ?',[id], (err, rows,fields) => {
          if(!err){
              res.json({status: 'Empleado eliminado'});
          }else{
