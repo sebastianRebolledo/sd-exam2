@@ -1,6 +1,6 @@
 //aqui creamos un obejto de conexion, vamos a usar un objeto de mysql para conectarse.
 const mysql = require ('mysql');
-
+/** 
 const mysqlConnection = mysql.createConnection({
     host:'localhost',
     user: 'root',
@@ -20,4 +20,4 @@ mysqlConnection.connect(function(err) {
 });
 
 module.exports = mysqlConnection;
-
+*/
