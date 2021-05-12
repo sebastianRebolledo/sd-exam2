@@ -5,6 +5,41 @@
 
 -Jaime Cardona
 
+### Conexión Base de Datos y API
+
+    const mysql = require ('mysql');
+    
+    const mysqlConnection = mysql.createConnection({
+    host : process.env.DATABASE_HOST || 'localhost',
+    user : process.env.MYSQL_USER || 'root',
+    password : process.env.MYSQL_PASSWORD || 'password',
+    database : process.env.MYSQL_DATABASE || 'company'
+    })
+    
+    
+    function sleep(milliseconds) {
+     var start = new Date().getTime();
+     for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds) {
+       break;
+      }
+     }
+    } 
+    
+    mysqlConnection.connect(function(err) {
+    	sleep(5000)
+        if(err){
+            console.log(err);
+            return;
+        }else{
+            console.log('DB is connected')
+        }
+    });
+    
+    module.exports = mysqlConnection;
+
+La conexión a la base de datos la realizamos mediante el metodo de mysqlConnection usamos el sleep para que la app espere a la base de datos, ya que esta se demora en arrancar.
+
 ### Construcción API REST
 La api REST la elaboramos mediante node js, a continuación mostraremos como hicimos los metodos de la api:
 
