@@ -169,3 +169,8 @@ Lo primero que hacemos es traer la imagen sobre la cual vamos a trabajar que es 
     
 
 Lo mas importante de la parte del mysql_server_test es como mediante del mem_limit y el cpus limitamos la cantidad de recursos que son asignados, mediante scale desplegamos el numero de contenedores que deseamos es muy imortante que al momento de hacer scale tengamos en cuenta que debemos poner un rango de puertos, ya que si no lo hacemos nos arrojara error ya que los dos contenedores intentaran alojarse en un mismo puerto, la parte de la app es muy parecida. Tambien creamos una network para lograr que los dos contenedores se pudieran comunicar.
+
+
+### Reflexión Final
+
+Para que este servicio pueda estar en producción necesitariamos trabajar mas en la parte de seguridad, ya que tal como esta nuestra aplicación es muy insegura. Para mejorar nuestra aplicación tambien seria idoneo hacer un balanceador de cargas que distribuya el trabajo entre los contenedores, tambien otra forma de mejorar nuestra aplicación tambien seria mejor utilizar kubernetes ya que permite mejor escalabilidad, en caso de emigrar a la nube podriamos utilizar 3 instancias de ec2 una para crear un balanceador de cargas, otra para tener el contenedor de mysql y la ultima para el backend, y un grupo de auto escalado o auto scalling group.
