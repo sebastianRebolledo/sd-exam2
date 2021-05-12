@@ -12,6 +12,7 @@ services:
     networks:
       - fullstack
     command: --default-authentication-plugin=mysql_native_password
+    
      
   app_test:
     build: 
@@ -25,9 +26,8 @@ services:
       - fullstack
     environment:
       - DATABASE_HOST=mysql_server_test
-    restart: always
-   
-  
+    restart: on-failure
+ 
       
 networks:
   fullstack:

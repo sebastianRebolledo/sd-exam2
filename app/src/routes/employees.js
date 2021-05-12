@@ -10,7 +10,7 @@ const router = express.Router();
          }else{
              console.log(err);
          }
-     })
+     });
  });
 
  router.get('/:id',(req,res)=> {
@@ -62,4 +62,5 @@ const router = express.Router();
          }
      });
  });
+ 
 module.exports = router;

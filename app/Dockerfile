@@ -15,3 +15,7 @@ COPY [".","/usr/src"]
 EXPOSE 3000
 
 CMD ["node","src/index.js"]
+
+COPY wait.sh /wait.sh
+
+RUN chmod +x /wait.sh
