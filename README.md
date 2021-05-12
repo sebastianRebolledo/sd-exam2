@@ -1,9 +1,11 @@
-##Integrantes 
+## Integrantes
 -Carlos Heyder
+
 -Sebastian Rebolledo
+
 -Jaime Cardona
 
-###Construcción API REST
+### Construcción API REST
 La api REST la elaboramos mediante node js, a continuación mostraremos como hicimos los metodos de la api:
 
 **CREATE**:  
@@ -73,7 +75,7 @@ En el edit el usuario tendra que hacer dos cosas, primero pasar el id del emplea
 
 En este caso el usuario tiene que pasar el id del empleado que desea consultar medinate la ruta, si el metodo es exitoso se desplagara un JSON con toda la información del empleado de lo contrario se mostrara el error en la consola.
 
-###Dockerfile
+### Dockerfile
 
     FROM node:14
     COPY ["package.json","package-lock.json","/usr/src/"]
@@ -87,7 +89,7 @@ En este caso el usuario tiene que pasar el id del empleado que desea consultar m
 
 Lo primero que hacemos es traer la imagen sobre la cual vamos a trabajar que es la node version 14, en el copy pasamos todos los archivos al directorio /usr/src/ del container, despues de eso nos paramos sobre el directorio /usr/src que es en el directorio en el que vamos a trabajar, traemos la dependencia npm, exponemos el puerto 3000 y finalmente arrancamos la aplicación.
 
-###docker-compose
+### docker-compose
 
     version: "3.9"
     
