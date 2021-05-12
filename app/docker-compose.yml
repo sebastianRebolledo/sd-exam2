@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   mysql_server_test:
@@ -6,30 +6,40 @@ services:
     environment: 
       - MYSQL_DATABASE=company
       - MYSQL_ROOT_PASSWORD=password
+    mem_limit: 500M
+    cpus: 1.0
+    scale: 2
+    volumes: 
+       - ./database:/docker-entrypoint-initdb.d/
     ports:
-      - 3306:3306
+      - "3306-3308:3306"
     restart: always
     networks:
       - fullstack
     command: --default-authentication-plugin=mysql_native_password
     
      
-  app_test:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+  app_test: 
+    #build: 
+      #context: .
+      #dockerfile: Dockerfile
+    image: sereme98/parcial2distribuidos:0.0.1
     ports: 
-      - 3000:3000
+      - 3000-3002:3000
+    scale: 2
     depends_on: 
       - mysql_server_test
     networks:
       - fullstack
     environment:
       - DATABASE_HOST=mysql_server_test
+    mem_limit: 500M
+    cpus: 1.0
     restart: on-failure
  
       
 networks:
   fullstack:
     driver: bridge
-
+volumes:
+  dbdata:

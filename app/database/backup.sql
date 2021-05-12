@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.23, for Linux (x86_64)
 --
--- Host: localhost    Database: company
+-- Host: mysql_server_test    Database: company
 -- ------------------------------------------------------
 -- Server version	8.0.23-0ubuntu0.20.10.1
 
@@ -36,7 +36,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'Sebastian R',4),(2,'Pepito',5),(4,'Pepito',5);
+INSERT INTO `employees` VALUES (1,'Sebastian R',4),(2,'Pepito',5),(3,'juan',5),(4,'josue',5);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
