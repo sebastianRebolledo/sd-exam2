@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mysql_server_test:
+    image: mysql:8.0
+    environment: 
+      - MYSQL_DATABASE=company
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    restart: always
+    networks:
+      - fullstack
+    command: --default-authentication-plugin=mysql_native_password
+     
+  app_test:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 3000:3000
+    depends_on: 
+      - mysql_server_test
+    networks:
+      - fullstack
+    environment:
+      - DATABASE_HOST=mysql_server_test
+    restart: always
+   
+  
+      
+networks:
+  fullstack:
+    driver: bridge
+
